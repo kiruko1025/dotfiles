@@ -115,7 +115,7 @@ source /home/everett/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 export PATH=$PATH:/home/everett/.spicetify
-
+export PATH=$PATH:/home/everett/.local/bin
 #aliases
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -131,4 +131,6 @@ alias ve='python3 -m venv ./venv'
 alias va='source ./venv/bin/activate'
 
 alias c99='cc -std=c99 -Wall'
+
+alias s='source ~/.zshrc'
 
