@@ -116,6 +116,7 @@ source /home/everett/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 export PATH=$PATH:/home/everett/.spicetify
 export PATH=$PATH:/home/everett/.local/bin
+export PATH=$PATH:/home/everett/anaconda3/bin
 #aliases
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -133,4 +134,23 @@ alias va='source ./venv/bin/activate'
 alias c99='cc -std=c99 -Wall'
 
 alias s='source ~/.zshrc'
+
+conda init zsh
+conda activate default
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/everett/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/everett/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/everett/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/everett/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 

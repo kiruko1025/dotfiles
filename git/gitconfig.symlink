@@ -1,0 +1,54 @@
+[include]
+        path = ~/.gitconfig.local
+[hub]
+        protocol = https
+[alias]
+    # one-line log
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    a = add .
+
+	c = commit --verbose
+    ca = commit -a --verbose
+	cm = commit -m
+
+	d = diff
+	s = status -s
+    co = checkout
+
+	# list aliases
+    alias = "!git config -l | grep alias | cut -c 7-"
+[core]
+	excludesfile = ~/.gitignore
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[core]
+        excludesfile = ~/.gitignore
+        editor = vim[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[core]
+        excludesfile = ~/.gitignore
+        editor = code
+[apply]
+        whitespace = nowarn
+[mergetool]
+        keepBackup = false
+[difftool]
+        prompt = false
+[help]
+        autocorrect = 1
+[push]
+        # See `git help config` (search for push.default)
+        # for more information on different options of the below setting.
+        #
+        # Setting to git 2.0 default to suppress warning message
+        default = simple
+
+[init]
+	defaultBranch = main
+

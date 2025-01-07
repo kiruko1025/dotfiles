@@ -8,6 +8,25 @@ function notmath(context) {
 endglobal
 
 #General snippets
+context notmath(context)
+snippet env "global environment" b
+\usepackage{import}
+\usepackage{xifthen}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{asmath}
+
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./Figures/}{#1.pdf_tex}
+}
+endsnippet
+
+context notmath(context)
+snippet cat "catpussin color scheme" b
+\usepackage[mocha]{catppuccinpalette}
+endsnippet
+
 snippet beg "environment" A
 \begin{$1}
 $0
