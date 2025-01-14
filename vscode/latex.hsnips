@@ -10,16 +10,40 @@ endglobal
 #General snippets
 context notmath(context)
 snippet env "global environment" b
+\documentclass{article}
 \usepackage{import}
 \usepackage{xifthen}
 \usepackage{pdfpages}
 \usepackage{transparent}
-\usepackage{asmath}
-
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{listing}
+\usepackage{xcolor}
 \newcommand{\incfig}[1]{%
     \def\svgwidth{\columnwidth}
     \import{./Figures/}{#1.pdf_tex}
 }
+\title{$1}
+\author{$2}
+\date{$3}
+
+\begin{document}
+\maketitle
+$0
+\end{document}
+endsnippet
+
+context notmath(context)
+snippet code "code snippet" b
+\begin{lstlisting}[language=$1]
+$0
+\end{lstlisting}
+endsnippet
+
+context notmath(context)
+snippet codefile "code snippet from file" b
+\lstinputlisting[language=$1, firstline =$2, lastline=$3]{$4}
+$0
 endsnippet
 
 context notmath(context)
