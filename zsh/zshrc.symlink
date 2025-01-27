@@ -154,3 +154,12 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+path=('/home/everett/.juliaup/bin' $path)
+export PATH
+
+# <<< juliaup initialize <<<

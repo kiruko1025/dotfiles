@@ -10,23 +10,24 @@ endglobal
 #General snippets
 context notmath(context)
 snippet env "global environment" b
-\documentclass{article}
+\documentclass[a4paper]{article}
+\usepackage{tikz}
 \usepackage{import}
 \usepackage{xifthen}
 \usepackage{pdfpages}
 \usepackage{transparent}
 \usepackage{amsthm}
 \usepackage{amsmath}
-\usepackage{listing}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{tikz}
 \usepackage{xcolor}
-\newcommand{\incfig}[1]{%
-    \def\svgwidth{\columnwidth}
-    \import{./Figures/}{#1.pdf_tex}
-}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\graphicspath{ {images/} }
 \title{$1}
 \author{$2}
 \date{$3}
-
 \begin{document}
 \maketitle
 $0
@@ -41,9 +42,18 @@ $0
 endsnippet
 
 context notmath(context)
-snippet codefile "code snippet from file" b
-\lstinputlisting[language=$1, firstline =$2, lastline=$3]{$4}
+snippet gra "add a graph" b
+\begin{figure}[t]
+\includegraphics[]{$1}
+\centering
+\end{figure}
 $0
+endsnippet
+
+
+context notmath(context)
+snippet codefile "code snippet from file" b
+\lstinputlisting[language=$1, firstline =$2, lastline=$3]{$4} $0
 endsnippet
 
 context notmath(context)
@@ -51,10 +61,21 @@ snippet cat "catpussin color scheme" b
 \usepackage[mocha]{catppuccinpalette}
 endsnippet
 
-snippet beg "environment" A
+snippet beg "environment" b
 \begin{$1}
 $0
 \end{$1}
+endsnippet
+
+
+context notmath(context)
+snippet bd "environment" iA
+\textbf{$1} $0
+endsnippet
+
+
+snippet sti "small title" bi
+\vspace*{0.2cm}{\Large\textbf{$1}}\\\\ $0
 endsnippet
 
 context notmath(context)
@@ -70,47 +91,17 @@ snippet box "Box" A
 endsnippet
 
 context notmath(context)
-snippet `table([1-9]{1})\ ([1-9]{1})` "Table environment" bA
-\begin{table}[H]
+snippet table "Table environment" b
+\begin{table}[${1:htpb}]
 	\centering
-	\begin{tabular}{``
-	let len = m[2];
-	let results = "";
-	for(var i=0; i<len-1; i++){
-		results += "c|"
-	}
-	results += "c";
-	rv = results;
-	``}
-	    \toprule
-			``
-			let order = 1;
-			nrow = m[1];
-			ncol = m[2];
-			for (var i=0; i<nrow-1; i++){
-				for(var j = 0;j <ncol-1;j++){
-					rv += `${snip.tabstop(order+3)} & `;
-					order ++;
-				}	
-				rv += ` ${snip.tabstop(order+3)} \\\\`+ `\\`+ `\n`;
-				order ++;
-				if(i == 0){
-					rv += `		\\midrule` + `\n`;
-				}
-				rv += `			`;
-			}	
-			for(var j = 0;j <ncol-1;j++){
-				rv += `${snip.tabstop(order+3)} & `;
-				order ++;
-			}
-			rv += ` ${snip.tabstop(order+3)} \\\\` + `\\`;
-			``
-    	\bottomrule
-	\end{tabular}
 	\caption{${2:caption}}
 	\label{tab:${3:label}}
+	\begin{tabular}{${5:c}}
+	$0${5/((?<=.)c|l|r)|./(?1: & )/g}
+	\end{tabular}
 \end{table}
 endsnippet
+
 
 context notmath(context)
 snippet fig "Figure environment" b
@@ -122,16 +113,51 @@ snippet fig "Figure environment" b
 \end{figure}
 endsnippet
 
+snippet enum "Enumerate" bA
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet item "Itemize" bA
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
+snippet desc "Description" b
+\begin{description}
+	\item[$1] $0
+\end{description}
+endsnippet
+
 
 #Math modes
-snippet ;; "Inline math" iA
-\$$0\$
+snippet mk "Inline math" iA
+\$$1\$$0
 endsnippet
 
 snippet dm "Display math" bA
 \begin{align*}
 $0
 \end{align*}
+endsnippet
+
+snippet plot "Plot" w
+\begin{figure}[$1]
+	\centering
+	\begin{tikzpicture}
+		\begin{axis}[
+			xmin= ${2:-10}, xmax= ${3:10},
+			ymin= ${4:-10}, ymax = ${5:10},
+			axis lines = middle,
+		]
+			\addplot[domain=$2:$3, samples=${6:100}]{$7};
+		\end{axis}
+	\end{tikzpicture}
+	\caption{$8}
+	\label{${9:$8}}
+\end{figure}
 endsnippet
 
 
@@ -147,8 +173,26 @@ snippet sq "square root" Ai
 endsnippet
 
 context math(context)
-snippet ee "exp (superscript)" Ai
+snippet sr "square" Ai
+^{2}$0
+endsnippet
+
+context math(context)
+snippet invs "inverse" Ai
+^{-1}$0
+endsnippet
+
+context math(context)
+snippet rd "exp (superscript)" Ai
 ^{ $1 }$0
+endsnippet
+
+snippet sum "sum" w
+\sum_{n=${1:1}}^{${2:\infty}} ${3:a_n z^n}
+endsnippet
+
+snippet taylor "taylor" w
+\sum_{${1:k}=${2:0}}^{${3:\infty}} ${4:c_$1} (x-a)^$1 $0
 endsnippet
 
 context math(context)
@@ -231,10 +275,6 @@ snippet ddot "ddot" Ai
 \ddot{$1}$0
 endsnippet
 
-context math(context)
-snippet vec "vec" Ai
-\vec{$1}$0
-endsnippet
 
 context math(context)
 snippet tilde "tilde" Ai
@@ -251,10 +291,6 @@ snippet und "und" Ai
 \underline{$1}$0
 endsnippet
 
-context math(context)
-snippet norm "norm" Ai
-\lVert $1 \rVert $0
-endsnippet
 
 context math(context)
 snippet abs "absolute value" Ai
@@ -269,6 +305,21 @@ endsnippet
 context math(context)
 snippet Set "large set" Ai
 \Set{ $1 }$0
+endsnippet
+
+context math(context)
+snippet ee "e" Ai
+e^{ $1 }$0
+endsnippet
+
+context math(context)
+snippet log "log" Ai
+\log_{ $1 }$0
+endsnippet
+
+context math(context)
+snippet ln "natural log" Ai
+\ln_{ $1 }$0
 endsnippet
 
 #Greek Letters
@@ -439,7 +490,7 @@ endsnippet
 
 #Symbols
 context math(context)
-snippet @@ "infinity" Ai
+snippet ooo "infinity" Ai
 \infty
 endsnippet
 
