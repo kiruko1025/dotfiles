@@ -24,7 +24,7 @@ snippet env "global environment" b
 \usepackage{xcolor}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\graphicspath{ {images/} }
+\graphicspath{ {./images/} }
 \title{$1}
 \author{$2}
 \date{$3}
@@ -43,7 +43,7 @@ endsnippet
 
 context notmath(context)
 snippet gra "add a graph" b
-\begin{figure}[t]
+\begin{figure}[h]
 \includegraphics[]{$1}
 \centering
 \end{figure}
