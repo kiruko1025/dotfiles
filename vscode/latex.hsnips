@@ -11,6 +11,10 @@ endglobal
 context notmath(context)
 snippet env "global environment" b
 \documentclass[a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
 \usepackage{tikz}
 \usepackage{import}
 \usepackage{xifthen}
@@ -25,6 +29,7 @@ snippet env "global environment" b
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \graphicspath{ {./images/} }
+\pdfsuppresswarningpagegroup=1
 \title{$1}
 \author{$2}
 \date{$3}
@@ -34,12 +39,14 @@ $0
 \end{document}
 endsnippet
 
+
 context notmath(context)
 snippet code "code snippet" b
 \begin{lstlisting}[language=$1]
 $0
 \end{lstlisting}
 endsnippet
+
 
 context notmath(context)
 snippet gra "add a graph" b
@@ -56,15 +63,23 @@ snippet codefile "code snippet from file" b
 \lstinputlisting[language=$1, firstline =$2, lastline=$3]{$4} $0
 endsnippet
 
+
 context notmath(context)
 snippet cat "catpussin color scheme" b
 \usepackage[mocha]{catppuccinpalette}
 endsnippet
 
+
 snippet beg "environment" b
 \begin{$1}
 $0
 \end{$1}
+endsnippet
+
+snippet desc "Description" b
+\begin{description}
+	\item[$1] $0
+\end{description}
 endsnippet
 
 
