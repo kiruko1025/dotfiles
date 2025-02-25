@@ -27,6 +27,8 @@ snippet env "global environment" b
 \usepackage{xcolor}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
+\usepackage{geometry}
+\usepackage{setspace}
 \graphicspath{ {./images/} }
 \pdfsuppresswarningpagegroup=1
 \title{$1}
@@ -197,6 +199,11 @@ snippet invs "inverse" Ai
 endsnippet
 
 context math(context)
+snippet _ "subscript" Ai
+_{ $1 }$0
+endsnippet
+
+context math(context)
 snippet rd "exp (superscript)" Ai
 ^{ $1 }$0
 endsnippet
@@ -313,13 +320,9 @@ endsnippet
 
 context math(context)
 snippet set "set" Ai
-\set{ $1 }$0
+\{ $1 \}$0
 endsnippet
 
-context math(context)
-snippet Set "large set" Ai
-\Set{ $1 }$0
-endsnippet
 
 context math(context)
 snippet ee "e" Ai
