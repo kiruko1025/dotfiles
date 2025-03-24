@@ -120,14 +120,15 @@ export PATH=$PATH:/home/everett/anaconda3/bin
 #aliases
 alias zshconfig="code ~/.zshrc"
 alias ohmyzsh="mate ~/.oh-my-zsh"
-alias poole=/home/everett/Desktop/sites/poole-tip/poole.py
 
-alias gh='history|grep'
+alias hg='history|grep'
 
-alias ls='colorls'
-alias ll='colorls -l'
-alias la='colorls -al'
-alias lt='colorls -t'
+alias c='clear'                                                        # clear terminal
+alias l='eza -lh --icons=auto'                                         # long list
+alias ls='eza -1 --icons=auto'                                         # short list
+alias ll='eza -lha --icons=auto --sort=name --group-directories-first' # long list all
+alias ld='eza -lhD --icons=auto'                                       # long list dirs
+alias lt='eza --icons=auto --tree'  
 
 alias ve='python3 -m venv ./venv'
 alias va='source ./venv/bin/activate'
@@ -136,8 +137,6 @@ alias c99='cc -std=c99 -Wall'
 
 alias s='source ~/.zshrc'
 
-conda init zsh
-conda activate default
 
 
 # >>> conda initialize >>>
