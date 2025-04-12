@@ -36,7 +36,12 @@ venv
 *.fls
 *fdb_latexmk
 *.synctex.gz
-
+*.bib
+*.bbl
+*.blg
+*.log
+*.toc
+*.dvi
 # general
 log/
 *.log

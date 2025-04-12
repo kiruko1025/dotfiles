@@ -48,7 +48,7 @@ setup_gitconfig () {
     success 'gitconfig'
   fi
 }
-
+alias s='source ~/.zshrc'
 
 link_file () {
   local src=$1 dst=$2
